@@ -2,7 +2,7 @@
   <div class="container">
     <div class="app">
       <Sidebar />
-      <h1>Audio Player</h1>
+      <!-- <h1>Audio Player</h1> -->
       <div class="main-page">
         <router-view></router-view>
       </div>

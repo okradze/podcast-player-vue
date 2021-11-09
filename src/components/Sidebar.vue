@@ -7,14 +7,14 @@
     id="toggle"
   >
     <span
-      id="toggle-icon"
+      class="toggle-icon"
       :class="{ 'toggle-icon-when-visible': visible }"
     ></span>
   </span>
 
-  <div id="sidebar" :class="{ 'sidebar-mobile-visible': visible }">
+  <div class="sidebar" :class="{ 'sidebar-mobile-visible': visible }">
     <h1 id="logo">
-      <router-link to="/" id="logo-link">Podcast</router-link> |
+      <router-link to="/" id="logo-link">Podcast</router-link>
     </h1>
 
     <nav id="nav">
@@ -91,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 @import "../utils";
 
-#sidebar {
+.sidebar {
   position: fixed;
   width: 20rem;
 
@@ -135,9 +135,9 @@ export default {
   }
 }
 
-#toggle-icon,
-#toggle-icon::before,
-#toggle-icon::after {
+.toggle-icon,
+.toggle-icon::before,
+.toggle-icon::after {
   display: inline-block;
   width: 2.5rem;
   height: 2px;
@@ -147,7 +147,7 @@ export default {
     top 0.3s ease-in-out;
 }
 
-#toggle-icon {
+.toggle-icon {
   position: relative;
 
   &::before,

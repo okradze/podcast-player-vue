@@ -1,30 +1,91 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Podcasts</router-link> |
-    <router-link to="/discover">Discover</router-link>
+  <div class="container">
+    <div class="app">
+      <div>
+        <router-link to="/">Podcasts</router-link> |
+        <router-link to="/discover">Discover</router-link>
+      </div>
+      <h1>Audio Player</h1>
+      <div class="main-page">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
-  <router-view />
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+@import './utils';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
-#nav {
-  padding: 30px;
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    ::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
     }
-  }
+    ::-webkit-scrollbar-track {
+        background: #f4f4f4;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $primary;
+    }
+}
+
+body {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: $text;
+    overflow-y: scroll;
+}
+
+h1 {
+    margin: 0;
+}
+
+
+.app {
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    grid-column-gap: 4rem;
+    padding: 4rem 2rem;
+
+    @media only screen and (max-width: 850px) {
+        grid-column-gap: 0;
+        grid-template-columns: 1fr;
+    }
+}
+
+.main-page {
+    grid-column-start: 2;
+    padding-bottom: 10rem;
+
+    @media only screen and (max-width: 850px) {
+        grid-column-start: 1;
+    }
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;
+    }
 }
 </style>

@@ -12,6 +12,9 @@ const state = {
 const getters = {
   podcasts (state) {
     return state.podcasts
+  },
+  loading (state) {
+    return state.isFetching
   }
 }
 
@@ -50,7 +53,7 @@ const mutations = {
     state.isFetching = false
     state.has_next = has_next
     state.lastFetchedPage = page_number
-    state.podcasts = [...state.podcasts, podcasts]
+    state.podcasts = [...state.podcasts, ...podcasts]
     state.error = null
   },
 }

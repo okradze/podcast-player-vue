@@ -3,7 +3,7 @@
     <div class="image-wrapper">
       <img class="image" :src="thumbnail" alt="" />
     </div>
-    <div className="{styles.Content}">
+    <div className="content">
       <p class="ellipsis publisher">{{ publisher }}</p>
       <h4 class="ellipsis title">{{ title }}</h4>
 
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import "../../utils";
+@import "../utils";
 
 .item {
   display: flex;

@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
+import podcasts from './modules/podcasts'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    podcasts,
+  },
 });

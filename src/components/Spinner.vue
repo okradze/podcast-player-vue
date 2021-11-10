@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span id="spinner">
+    <span class="spinner">
       <span class="spin-item" />
       <span class="spin-item" />
       <span class="spin-item" />
@@ -10,7 +10,7 @@
 </template>
 
 <style lang='scss' scoped>
-@import "../../utils";
+@import "../utils";
 
 @keyframes spin {
   to {
@@ -30,7 +30,7 @@ div {
   justify-content: center;
 }
 
-#spinner {
+.spinner {
   position: relative;
   display: inline-block;
   width: 2rem;

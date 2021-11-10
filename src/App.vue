@@ -98,4 +98,13 @@ h1 {
     max-width: 1600px;
   }
 }
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
 </style>

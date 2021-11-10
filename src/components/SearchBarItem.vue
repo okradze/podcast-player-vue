@@ -6,13 +6,8 @@
     >
       <img class="image" :src="podcast.thumbnail" alt="" />
       <div>
-        {{ podcast.title_original }}
-        <!-- <EllipsisText tagName='h4' class="title">
-                    {{ title_original }}
-                </EllipsisText>
-                <EllipsisText tagName='p' class="publisher">
-                    {{ publisher_original }}
-                </EllipsisText> -->
+        <h4 class="ellipsis title">{{ podcast.title_original }}</h4>
+        <p class="ellipsis title">{{ podcast.title_original }}</p>
       </div>
     </router-link>
   </li>

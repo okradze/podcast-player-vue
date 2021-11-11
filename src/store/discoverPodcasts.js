@@ -23,7 +23,6 @@ const getters = {
 const actions = {
   async fetchPodcastLists ({ state, commit }) {
     try {
-      console.log('fetchPodcastLists')
       commit('setNextPage')
       commit('setLoading')
 

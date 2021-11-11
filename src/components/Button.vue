@@ -1,5 +1,7 @@
 <template>
-  <button type="button" :class="{ inverted: inverted }"></button>
+  <button type="button" :class="{ inverted: inverted }">
+    <slot></slot>
+  </button>
 </template>
 
 <script>

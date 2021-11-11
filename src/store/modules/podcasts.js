@@ -1,12 +1,11 @@
 import { listenNotesApi } from '../../api'
 
 const state = {
-  isFetching: false,
-  page: 1,
-  lastFetchedPage: null,
+  loading: false,
+  page: 0,
   podcasts: [],
   error: null,
-  has_next: true
+  hasNext: true
 }
 
 const getters = {
@@ -14,48 +13,47 @@ const getters = {
     return state.podcasts
   },
   loading (state) {
-    return state.isFetching
+    return state.loading
+  },
+  hasNextPage (state) {
+    return state.hasNext
   }
 }
 
 const actions = {
   async fetchPodcasts ({ state, commit }) {
     try {
-      let { page, lastFetchedPage } = state
+      commit('setNextPage')
+      commit('setLoading')
 
-      if (page > lastFetchedPage) {
-        commit('setLoading')
+      const { data } = await listenNotesApi.get(`/best_podcasts?page=${state.page}`)
 
-        const { data } = await listenNotesApi.get(
-          `/best_podcasts?page=${page}`,
-        )
-
-        commit('setNewPodcasts', data)
-      }
-
+      commit('setNewPodcasts', data)
     } catch (error) {
       commit('setError', error)
     }
-  }
+  },
 }
 
 const mutations = {
   setLoading (state) {
-    state.isFetching = true
+    state.loading = true
   },
   setError (state, error) {
     state.error = error
-    state.isFetching = false
+    state.loading = false
   },
   setNewPodcasts (state, data) {
-    const { has_next, page_number, podcasts } = data
+    const { has_next, podcasts } = data
 
-    state.isFetching = false
-    state.has_next = has_next
-    state.lastFetchedPage = page_number
+    state.loading = false
+    state.hasNext = has_next
     state.podcasts = [...state.podcasts, ...podcasts]
     state.error = null
   },
+  setNextPage (state) {
+    state.page++
+  }
 }
 
 export default {

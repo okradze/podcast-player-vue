@@ -22,6 +22,10 @@ export default {
   name: "PodcastList",
   components: { PodcastItem },
   props: {
+    title: {
+      type: String,
+      required: false,
+    },
     podcasts: Array,
   },
 };

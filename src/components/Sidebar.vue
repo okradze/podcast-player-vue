@@ -39,14 +39,14 @@
         </li>
 
         <li class="list-item">
-          <router-link
+          <!-- <router-link
             to="/podcast"
             class="link"
             exact-active-class="active-link"
           >
             <podcast-svg class="link-icon" />
             Now Playing
-          </router-link>
+          </router-link> -->
           <!-- <NavLink
                                 to={`/podcast/${playingPodcastId}`}
                                 className={styles.Link}
@@ -65,14 +65,14 @@
 
 <script>
 import HomeSvg from "../components/HomeSvg.vue";
-import PodcastSvg from "../components/PodcastSvg.vue";
+// import PodcastSvg from "../components/PodcastSvg.vue";
 import SearchSvg from "./SearchSvg.vue";
 
 export default {
   name: "Sidebar",
   components: {
     HomeSvg,
-    PodcastSvg,
+    // PodcastSvg,
     SearchSvg,
   },
   data() {

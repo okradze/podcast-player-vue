@@ -1,4 +1,4 @@
-import { listenNotesApi } from '../../api'
+import { listenNotesApi } from '../api'
 
 const state = {
   loading: false,

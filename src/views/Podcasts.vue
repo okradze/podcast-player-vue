@@ -20,10 +20,10 @@ export default {
   name: "Podcasts",
   components: { PodcastList, Spinner, Button, IntersectionObserver },
   methods: {
-    ...mapActions(["fetchPodcasts"]),
+    ...mapActions("podcasts", ["fetchPodcasts"]),
   },
   computed: {
-    ...mapGetters(["podcasts", "loading", "hasNextPage"]),
+    ...mapGetters("podcasts", ["podcasts", "loading", "hasNextPage"]),
   },
   mounted() {
     if (!this.podcasts.length) {

@@ -3,14 +3,14 @@ import { listenNotesApi } from '../api'
 const state = {
   loading: false,
   page: 0,
-  podcasts: [],
+  podcastLists: [],
   error: null,
   hasNext: true
 }
 
 const getters = {
-  podcasts (state) {
-    return state.podcasts
+  podcastLists (state) {
+    return state.podcastLists
   },
   loading (state) {
     return state.loading
@@ -21,14 +21,15 @@ const getters = {
 }
 
 const actions = {
-  async fetchPodcasts ({ state, commit }) {
+  async fetchPodcastLists ({ state, commit }) {
     try {
+      console.log('fetchPodcastLists')
       commit('setNextPage')
       commit('setLoading')
 
-      const { data } = await listenNotesApi.get(`/best_podcasts?page=${state.page}`)
+      const { data } = await listenNotesApi.get(`/curated_podcasts?page=${state.page}`)
 
-      commit('setNewPodcasts', data)
+      commit('setNewPodcastLists', data)
     } catch (error) {
       commit('setError', error)
     }
@@ -43,12 +44,12 @@ const mutations = {
     state.error = error
     state.loading = false
   },
-  setNewPodcasts (state, data) {
-    const { has_next, podcasts } = data
+  setNewPodcastLists (state, data) {
+    const { has_next, curated_lists } = data
 
     state.loading = false
     state.hasNext = has_next
-    state.podcasts = [...state.podcasts, ...podcasts]
+    state.podcastLists = [...state.podcastLists, ...curated_lists]
     state.error = null
   },
   setNextPage (state) {

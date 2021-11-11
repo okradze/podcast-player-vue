@@ -15,17 +15,28 @@
         </span>
       </div>
 
-      <!-- <PlayButton role='button' tabIndex='0' class="play" onClick={()
-      => playEpisode(match.params.podcastId, episode)} /> -->
+      <PlaySvg
+        role="button"
+        tabindex="0"
+        class="play"
+        @click="playEpisode({ podcastId: this.$route.params.id, episode })"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+import PlaySvg from "./PlaySvg.vue";
+
 export default {
   name: "EpisodeItem",
+  components: { PlaySvg },
   props: {
     episode: Object,
+  },
+  methods: {
+    ...mapMutations("playingPodcast", ["playEpisode"]),
   },
 };
 </script>

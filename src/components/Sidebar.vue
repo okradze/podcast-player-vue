@@ -38,25 +38,15 @@
           </router-link>
         </li>
 
-        <li class="list-item">
-          <!-- <router-link
-            to="/podcast"
+        <li class="list-item" v-if="podcastId">
+          <router-link
+            :to="{ name: 'PodcastDetails', params: { id: podcastId } }"
             class="link"
             exact-active-class="active-link"
           >
-            <podcast-svg class="link-icon" />
+            <PodcastSvg class="link-icon" />
             Now Playing
-          </router-link> -->
-          <!-- <NavLink
-                                to={`/podcast/${playingPodcastId}`}
-                                className={styles.Link}
-                                activeClassName={
-                                    playingPodcastId ? styles.ActiveLink : ''
-                                }
-                            >
-                                <PodcastIcon className={styles.LinkIcon} />
-                                Now Playing
-                            </NavLink> -->
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -64,15 +54,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import HomeSvg from "../components/HomeSvg.vue";
-// import PodcastSvg from "../components/PodcastSvg.vue";
+import PodcastSvg from "../components/PodcastSvg.vue";
 import SearchSvg from "./SearchSvg.vue";
 
 export default {
   name: "Sidebar",
   components: {
     HomeSvg,
-    // PodcastSvg,
+    PodcastSvg,
     SearchSvg,
   },
   data() {
@@ -84,6 +75,9 @@ export default {
     toggle() {
       this.visible = !this.visible;
     },
+  },
+  computed: {
+    ...mapGetters("playingPodcast", ["podcastId"]),
   },
 };
 </script>

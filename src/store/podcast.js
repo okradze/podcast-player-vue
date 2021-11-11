@@ -24,6 +24,12 @@ const getters = {
   },
   recommendations (state) {
     return state.recommendations
+  },
+  episodes (state) {
+    return state.podcast?.episodes
+  },
+  areMoreEpisodes (state) {
+    return !!state.podcast?.next_episode_pub_date
   }
 }
 
@@ -52,12 +58,12 @@ const actions = {
       commit('setError', error)
     }
   },
-  async fetchMoreEpisodes ({ state, commit }, podcastId) {
+  async fetchMoreEpisodes ({ state, commit }) {
     try {
       commit('setEpisodesLoading')
 
       const { data } = await listenNotesApi.get(
-        `/podcasts/${podcastId}?next_episode_pub_date=${state.podcast.next_episode_pub_date}`,
+        `/podcasts/${state.podcast.id}?next_episode_pub_date=${state.podcast.next_episode_pub_date}`,
       )
 
       commit('setMoreEpisodes', data)
@@ -93,9 +99,9 @@ const mutations = {
   },
   setMoreEpisodes (state, data) {
     state.episodesLoading = false
-    state.episodes = data
     state.error = null
-    state.podcast.episodes.concat(data)
+    state.podcast.episodes = [...state.podcast.episodes, ...data.episodes]
+    state.podcast.next_episode_pub_date = data.next_episode_pub_date
   }
 }
 

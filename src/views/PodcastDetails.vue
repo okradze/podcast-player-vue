@@ -14,7 +14,9 @@
         </div>
       </div>
 
-      <div class="episode-list"></div>
+      <div class="episode-list">
+        <EpisodeList />
+      </div>
 
       <Spinner v-if="recommendationsLoading" />
       <PodcastList
@@ -30,9 +32,10 @@
 import { mapActions, mapGetters } from "vuex";
 import Spinner from "../components/Spinner.vue";
 import PodcastList from "../components/PodcastList.vue";
+import EpisodeList from "../components/EpisodeList.vue";
 
 export default {
-  components: { Spinner, PodcastList },
+  components: { Spinner, PodcastList, EpisodeList },
   name: "PodcastDetails",
   methods: {
     ...mapActions("podcast", [

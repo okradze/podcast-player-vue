@@ -2,7 +2,7 @@
   <div class="container">
     <div class="app">
       <Sidebar />
-      <!-- <h1>Audio Player</h1> -->
+      <AudioPlayer v-if="podcastId" />
       <div class="main-page">
         <Header />
         <router-view></router-view>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import AudioPlayer from "./components/AudioPlayer.vue";
 import Header from "./components/Header.vue";
 import Sidebar from "./components/Sidebar.vue";
 
@@ -20,6 +22,10 @@ export default {
   components: {
     Sidebar,
     Header,
+    AudioPlayer,
+  },
+  computed: {
+    ...mapGetters("playingPodcast", ["podcastId"]),
   },
 };
 </script>

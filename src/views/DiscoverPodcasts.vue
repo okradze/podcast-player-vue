@@ -34,7 +34,7 @@ export default {
       "hasNextPage",
     ]),
   },
-  mounted() {
+  created() {
     if (!this.podcastLists.length) {
       this.fetchPodcastLists();
     }

@@ -13,6 +13,15 @@ const getters = {
   episode (state) {
     return state.episode
   },
+  currentTime (state) {
+    return state.currentTime
+  },
+  volume (state) {
+    return state.volume
+  },
+  playing (state) {
+    return state.playing
+  }
 }
 
 const actions = {}

@@ -53,7 +53,7 @@ export default {
       "recommendations",
     ]),
   },
-  mounted() {
+  created() {
     const podcastId = this.$route.params.id;
     this.fetchPodcast(podcastId);
     this.fetchRecommendations(podcastId);

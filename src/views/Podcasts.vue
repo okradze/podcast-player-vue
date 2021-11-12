@@ -25,7 +25,7 @@ export default {
   computed: {
     ...mapGetters("podcasts", ["podcasts", "loading", "hasNextPage"]),
   },
-  mounted() {
+  created() {
     if (!this.podcasts.length) {
       this.fetchPodcasts();
     }
